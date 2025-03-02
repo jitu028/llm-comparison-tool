@@ -1,0 +1,8 @@
+# Exclude virtual environments, local dependencies
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+node_modules/
+path/to/venv/
