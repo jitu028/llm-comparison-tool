@@ -1,8 +1,9 @@
+---
 
 # **LLM Comparison Tool 🚀**  
 *A Streamlit-based benchmarking dashboard for comparing LLMs like OpenAI GPT, Google Gemini, Cohere, and Anthropic Claude.*
 
-![LLM Benchmarking](https://raw.githubusercontent.com/jitu028/llm-comparison-tool/main/assets/banner.png) 
+![LLM Benchmarking](https://raw.githubusercontent.com/jitu028/llm-comparison-tool/main/assets/banner.png)
 
 ---
 
@@ -18,11 +19,26 @@ The **LLM Comparison Tool** allows users to **benchmark, analyze, and compare** 
 
 ---
 
-## **🛠️ Tech Stack**  
-- **Frontend:** [Streamlit](https://streamlit.io/)  
-- **Backend:** Python (Flask API on Google Cloud Run)  
-- **Cloud Services:** Google Cloud Storage (GCS), Cloud Run  
-- **ML Models:** OpenAI GPT, Google Gemini, Cohere, Anthropic Claude  
+## **🛠️ Project Structure**  
+```bash
+llm-comparison-tool/
+│── backend/                # Backend API
+│   ├── .gcloudignore
+│   ├── Dockerfile
+│   ├── llm_benchmark_api.py   # Backend API script
+│   ├── requirements.txt
+│
+│── frontend/               # Streamlit Dashboard UI
+│   ├── Dockerfile
+│   ├── llm_benchmark_dashboard.py  # UI script
+│   ├── requirements.txt
+│
+│── scripts/                # Deployment Scripts
+│   ├── deploy_llm_comparison_api.sh
+│   ├── deploy_llm_comparison_dashboard.sh
+│
+│── README.md
+```
 
 ---
 
@@ -35,13 +51,27 @@ cd llm-comparison-tool
 ```
 
 ### **🔹 2. Install Dependencies**
+#### Backend API:
 ```bash
+cd backend
+pip install -r requirements.txt
+```
+#### Frontend Dashboard:
+```bash
+cd frontend
 pip install -r requirements.txt
 ```
 
 ### **🔹 3. Run Locally**
+#### Run Backend API:
 ```bash
-streamlit run rag_benchmark_dashboard.py
+cd backend
+python llm_benchmark_api.py
+```
+#### Run Frontend Dashboard:
+```bash
+cd frontend
+streamlit run llm_benchmark_dashboard.py
 ```
 
 ---
@@ -49,28 +79,23 @@ streamlit run rag_benchmark_dashboard.py
 ## **🚀 Deployment to Google Cloud Run**
 You can deploy both **frontend (Streamlit UI)** and **backend (Flask API)** to **Cloud Run**.
 
-### **🔹 1. Build and Push Docker Images**
-#### **Backend**
+### **🔹 1. Deploy Backend API**
+Run the following deployment script:
 ```bash
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/rag-benchmark-backend
-gcloud run deploy rag-benchmark-backend \
-    --image gcr.io/YOUR_PROJECT_ID/rag-benchmark-backend \
-    --platform managed \
-    --region us-central1 \
-    --allow-unauthenticated
+./scripts/deploy_llm_comparison_api.sh
 ```
+This will:
+- Build & push the backend API Docker image
+- Deploy it to **Google Cloud Run**
 
-#### **Frontend**
+### **🔹 2. Deploy Frontend Dashboard**
+Run the following deployment script:
 ```bash
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/rag-benchmark-dashboard
-gcloud run deploy rag-benchmark-dashboard \
-    --image gcr.io/YOUR_PROJECT_ID/rag-benchmark-dashboard \
-    --platform managed \
-    --region us-central1 \
-    --allow-unauthenticated
+./scripts/deploy_llm_comparison_dashboard.sh
 ```
-
-Replace **`YOUR_PROJECT_ID`** with your GCP project.
+This will:
+- Build & push the frontend Streamlit UI Docker image
+- Deploy it to **Google Cloud Run**
 
 ---
 
@@ -126,3 +151,5 @@ Contributions are **welcome**! Feel free to **fork, submit PRs, or open issues**
 
 ## **📄 License**
 This project is licensed under the **MIT License**.
+
+---
