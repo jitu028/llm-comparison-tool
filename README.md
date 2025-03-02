@@ -146,7 +146,7 @@ Contributions are **welcome**! Feel free to **fork, submit PRs, or open issues**
 ---
 
 ## **👤 Author**
-**Jitendra Gupta** ([@jitu028](https://github.com/jitu028))  
+**Jitendra Gupta** ([@jitu028](https://github.com/jitu028))  & **Saurabh Mishra**
 
 ---
 
