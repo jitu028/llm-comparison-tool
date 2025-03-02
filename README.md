@@ -1,11 +1,8 @@
-Here's a well-structured `README.md` for your **LLM Comparison Tool** GitHub repository:
-
----
 
 # **LLM Comparison Tool 🚀**  
 *A Streamlit-based benchmarking dashboard for comparing LLMs like OpenAI GPT, Google Gemini, Cohere, and Anthropic Claude.*
 
-![LLM Benchmarking](https://raw.githubusercontent.com/jitu028/llm-comparison-tool/main/assets/banner.png) *(Replace with an actual banner if available)*
+![LLM Benchmarking](https://raw.githubusercontent.com/jitu028/llm-comparison-tool/main/assets/banner.png) 
 
 ---
 
